@@ -16,35 +16,42 @@ Unless stated otherwise, `children` is an optional `Snippet`. An empty string de
 
 Native `<button>`, with a raised face and a stable base. Default `type` is `button`.
 
-| Prop | Default | Values / purpose |
-| --- | --- | --- |
-| `variant` | `default` | `default`, `small`, `next`, `trigger`, `projects`, `icon`, `tab` |
-| `size` | `default` | `default`, `small`; compact sizing affects `icon` |
-| `selected` | `false` | Selected styling for `tab`; does not set ARIA state |
-| `disabled` | `false` | Native disabled behavior; suppresses hover |
-| `ariaLabel` | unset | Convenience alias for `aria-label` |
-| `type` | `button` | Native button type; use `submit` explicitly in forms |
-| `children` | unset | Button content |
+| Prop        | Default   | Values / purpose                                                 |
+| ----------- | --------- | ---------------------------------------------------------------- |
+| `variant`   | `default` | `default`, `small`, `next`, `trigger`, `projects`, `icon`, `tab` |
+| `size`      | `default` | `default`, `small`; compact sizing affects `icon`                |
+| `selected`  | `false`   | Selected styling for `tab`; does not set ARIA state              |
+| `disabled`  | `false`   | Native disabled behavior; suppresses hover                       |
+| `ariaLabel` | unset     | Convenience alias for `aria-label`                               |
+| `type`      | `button`  | Native button type; use `submit` explicitly in forms             |
+| `children`  | unset     | Button content                                                   |
 
-| Variant | Appearance | Hover |
-| --- | --- | --- |
-| `default` | 13px type, 8px × 16px padding | Lighter surface and border |
-| `small` | 11px type, 4px × 10px padding | Lighter surface and border |
-| `next` | 14px bold accent text, 10px × 24px padding | Accent border |
-| `trigger` | 42px circular face | Accent text/icon and border |
-| `projects` | Pill, minimum 46px face height | Accent text/icon and border |
-| `icon` | 44px square face; 28px with `size="small"` | Accent text/icon and border |
-| `tab` | 10px bold type, compact padding | Lighter surface and border |
+| Variant    | Appearance                                 | Hover                       |
+| ---------- | ------------------------------------------ | --------------------------- |
+| `default`  | 13px type, 8px × 16px padding              | Lighter surface and border  |
+| `small`    | 11px type, 4px × 10px padding              | Lighter surface and border  |
+| `next`     | 14px bold accent text, 10px × 24px padding | Accent border               |
+| `trigger`  | 42px circular face                         | Accent text/icon and border |
+| `projects` | Pill, minimum 46px face height             | Accent text/icon and border |
+| `icon`     | 44px square face; 28px with `size="small"` | Accent text/icon and border |
+| `tab`      | 10px bold type, compact padding            | Lighter surface and border  |
 
 All enabled variants sit 2px above the base, lift to 3px with a hover-capable pointer, and press down to 0px. Theme tokens control the depths. Reduced-motion preferences remove the transitions.
 
 ```svelte
 <Button onclick={save}>Save</Button>
 <Button type="submit" disabled={saving}>Submit</Button>
-<Button variant="icon" size="small" ariaLabel="Listening history" onclick={showHistory}>
+<Button
+  variant="icon"
+  size="small"
+  ariaLabel="Listening history"
+  onclick={showHistory}
+>
   {@render historyIcon()}
 </Button>
-<Button variant="tab" selected={active} aria-pressed={active} onclick={select}>NP3</Button>
+<Button variant="tab" selected={active} aria-pressed={active} onclick={select}
+  >NP3</Button
+>
 ```
 
 Provide an accessible name for icon-only buttons. The `tab` variant is a visual primitive, not a full ARIA tabs widget; the consuming app owns tab roles, panels, and arrow-key navigation when needed.
@@ -53,12 +60,12 @@ Provide an accessible name for icon-only buttons. The `tab` variant is a visual 
 
 Native `<a>` with the same physical raised/pressed interaction.
 
-| Prop | Default | Purpose |
-| --- | --- | --- |
-| `variant` | `default` | `default`, `primary`, `icon` |
-| `href` | unset | Native link destination |
-| `target`, `rel` | unset | For `_blank`, defaults `rel` to `noopener noreferrer` |
-| `children` | unset | Link content |
+| Prop            | Default   | Purpose                                               |
+| --------------- | --------- | ----------------------------------------------------- |
+| `variant`       | `default` | `default`, `primary`, `icon`                          |
+| `href`          | unset     | Native link destination                               |
+| `target`, `rel` | unset     | For `_blank`, defaults `rel` to `noopener noreferrer` |
+| `children`      | unset     | Link content                                          |
 
 Use links for navigation and buttons for actions. Supply `href` to make a navigable link; there is no disabled-link API.
 
@@ -66,21 +73,21 @@ Use links for navigation and buttons for actions. Supply `href` to make a naviga
 
 ### Card
 
-| Prop | Default | Purpose |
-| --- | --- | --- |
-| `padding` | `default` | `default` or `none` |
-| `href` | unset | Render an `<a>` |
-| `onclick` | unset | Without `href`, render a `<button type="button">` |
-| `target`, `rel` | unset | Forwarded only for link cards; `_blank` gets a safe default `rel` |
-| `disabled` | `false` | Native disabling for button cards only |
-| `children` | unset | Content |
+| Prop            | Default   | Purpose                                                           |
+| --------------- | --------- | ----------------------------------------------------------------- |
+| `padding`       | `default` | `default` or `none`                                               |
+| `href`          | unset     | Render an `<a>`                                                   |
+| `onclick`       | unset     | Without `href`, render a `<button type="button">`                 |
+| `target`, `rel` | unset     | Forwarded only for link cards; `_blank` gets a safe default `rel` |
+| `disabled`      | `false`   | Native disabling for button cards only                            |
+| `children`      | unset     | Content                                                           |
 
 Without a destination or action, renders a static `<div>` with no hover. `href` takes precedence over `onclick` when choosing the element; the event can still observe a link click. `disabled` does not disable link cards. Static padding is 24px, reduced to 20px at widths of 600px and below. `padding="none"` removes padding and clips content to the corners.
 
 ```svelte
 <Card><Text>A static content container.</Text></Card>
 <Card href="/projects">Open projects →</Card>
-<Card onclick={() => detailsOpen = true}>Open details</Card>
+<Card onclick={() => (detailsOpen = true)}>Open details</Card>
 ```
 
 Action cards receive subtle hover and focus feedback. Keep cards containing forms or separate buttons/links static. There is no `interactive` prop: the action determines the behavior.
@@ -93,7 +100,8 @@ Separate native `<div>` primitives for flush cards. All accept `children` and na
 <Card padding="none">
   <CardHeader>
     <Heading level={2} size="section">Title</Heading>
-    {#snippet actions()}<Button variant="small" onclick={open}>Details</Button>{/snippet}
+    {#snippet actions()}<Button variant="small" onclick={open}>Details</Button
+      >{/snippet}
   </CardHeader>
   <CardBody><Text>Content</Text></CardBody>
   <CardFooter><Text size="xs">Metadata</Text></CardFooter>
@@ -104,27 +112,29 @@ Separate native `<div>` primitives for flush cards. All accept `children` and na
 
 Native `<dialog>` opened through `showModal()`.
 
-| Prop | Default | Purpose |
-| --- | --- | --- |
-| `title` | **required** | Accessible title and visible heading |
-| `open` | `true` | Bindable visibility; initialize your bound state to `false` |
-| `onclose` | unset | Notification for a user/native close request |
-| `maxWidth` | `520px` | CSS width cap |
-| `closeOnBackdrop` | `true` | Close on clicks outside the dialog bounds |
-| `closeLabel` | `Close` | Accessible name of the close icon button |
-| `children` | unset | Scrollable body |
-| `footer` | unset | Optional footer snippet |
-| `class` | empty | Extra dialog classes |
+| Prop              | Default      | Purpose                                                     |
+| ----------------- | ------------ | ----------------------------------------------------------- |
+| `title`           | **required** | Accessible title and visible heading                        |
+| `open`            | `true`       | Bindable visibility; initialize your bound state to `false` |
+| `onclose`         | unset        | Notification for a user/native close request                |
+| `maxWidth`        | `520px`      | CSS width cap                                               |
+| `closeOnBackdrop` | `true`       | Close on clicks outside the dialog bounds                   |
+| `closeLabel`      | `Close`      | Accessible name of the close icon button                    |
+| `children`        | unset        | Scrollable body                                             |
+| `footer`          | unset        | Optional footer snippet                                     |
+| `class`           | empty        | Extra dialog classes                                        |
 
 ```svelte
 <script>
   import { Button, Modal, Text } from 'bencica-ui';
   let open = $state(false);
 </script>
-<Button onclick={() => open = true}>Open</Button>
+
+<Button onclick={() => (open = true)}>Open</Button>
 <Modal title="Details" bind:open>
   <Text>Dialog content.</Text>
-  {#snippet footer()}<Button onclick={() => open = false}>Done</Button>{/snippet}
+  {#snippet footer()}<Button onclick={() => (open = false)}>Done</Button
+    >{/snippet}
 </Modal>
 ```
 
@@ -136,13 +146,13 @@ User close requests set `open = false` and call `onclose`. Setting the bound sta
 
 ## Layout
 
-| Component | Props and defaults | Behavior |
-| --- | --- | --- |
-| `PageShell` | `sidebar?: Snippet`, `children`, `maxWidth="var(--content-width)"` | Root div, optional aside and one main element. At 900px+, 340px sidebar and 72px column gap; otherwise stacked. |
-| `Stack` | `direction="vertical"`, `gap="4"`, `align="stretch"`, `justify="start"`, `wrap=false`, `children` | Flex layout. Direction: `vertical` / `horizontal`; align: `stretch` / `start` / `center` / `end`; justify: `start` / `center` / `end` / `space-between`. |
-| `Grid` | `minColumnWidth="240px"`, `gap="4"`, `children` | Auto-fit columns; minimum column width is capped at container width. |
-| `Divider` | Native `<hr>` attributes | 1px separator. |
-| `FloatingAction` | `placement="right"`, `offset="14px"`, `children` | Fixed bottom-left/right container, safe-area offsets, z-index 50. |
+| Component        | Props and defaults                                                                                | Behavior                                                                                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PageShell`      | `sidebar?: Snippet`, `children`, `maxWidth="var(--content-width)"`                                | Root div, optional aside and one main element. At 900px+, 340px sidebar and 72px column gap; otherwise stacked.                                          |
+| `Stack`          | `direction="vertical"`, `gap="4"`, `align="stretch"`, `justify="start"`, `wrap=false`, `children` | Flex layout. Direction: `vertical` / `horizontal`; align: `stretch` / `start` / `center` / `end`; justify: `start` / `center` / `end` / `space-between`. |
+| `Grid`           | `minColumnWidth="240px"`, `gap="4"`, `children`                                                   | Auto-fit columns; minimum column width is capped at container width.                                                                                     |
+| `Divider`        | Native `<hr>` attributes                                                                          | 1px separator.                                                                                                                                           |
+| `FloatingAction` | `placement="right"`, `offset="14px"`, `children`                                                  | Fixed bottom-left/right container, safe-area offsets, z-index 50.                                                                                        |
 
 `gap` uses the `Space` string union: `"0"`, `"1"`, `"2"`, `"3"`, `"4"`, `"5"`, `"6"`, `"8"`, `"12"`. These map to the spacing tokens. `PageShell` contains `<main>`; use it once for the main page rather than nesting it inside another main landmark.
 
@@ -175,12 +185,12 @@ User close requests set `open = false` and call `onclose`. Setting the bound sta
 
 ### Field
 
-| Prop | Default | Purpose |
-| --- | --- | --- |
-| `id`, `label` | **required** | Control ID and associated visible label |
-| `hint`, `error` | empty | Description; error takes precedence and uses `role="alert"` |
-| `required` | `false` | Visual required marker; also set native `required` on the control |
-| `children` | **required** | `Snippet<[{ id, describedby, invalid }]>` |
+| Prop            | Default      | Purpose                                                           |
+| --------------- | ------------ | ----------------------------------------------------------------- |
+| `id`, `label`   | **required** | Control ID and associated visible label                           |
+| `hint`, `error` | empty        | Description; error takes precedence and uses `role="alert"`       |
+| `required`      | `false`      | Visual required marker; also set native `required` on the control |
+| `children`      | **required** | `Snippet<[{ id, describedby, invalid }]>`                         |
 
 The snippet receives `id`, optional `describedby` (the generated description ID), and `invalid` (whether an error is present). Forward these to the actual control.
 
@@ -189,9 +199,16 @@ The snippet receives `id`, optional `describedby` (the generated description ID)
   import { Field, Input } from 'bencica-ui';
   let name = $state('');
 </script>
+
 <Field id="name" label="Name" hint="Public display name" required>
   {#snippet children({ id, describedby, invalid })}
-    <Input {id} bind:value={name} aria-describedby={describedby} {invalid} required />
+    <Input
+      {id}
+      bind:value={name}
+      aria-describedby={describedby}
+      {invalid}
+      required
+    />
   {/snippet}
 </Field>
 ```
@@ -206,18 +223,21 @@ Bindable `value` defaults to `''`, `rows=4`, `invalid=false`. Native textarea at
 
 ## Feedback
 
-| Component | Props and defaults | Behavior |
-| --- | --- | --- |
-| `Badge` | `tone="neutral"`, `dot=false`, `children` | Tones: `neutral`, `accent`, `success`, `warning`, `danger`. Optional decorative dot. |
-| `Progress` | `value=0`, `label="Progress"`, `height="4px"`, `color="var(--accent-1)"`, `glow=false` | Value is a percentage, clamped to 0–100; non-finite values become zero. Exposes `role="progressbar"` and ARIA values. |
-| `Skeleton` | `width="100%"`, `height="14px"`, `radius="var(--radius-sm)"` | Decorative, `aria-hidden`, shimmer disabled for reduced motion. |
-| `EmptyState` | `title` **required**, `description=''`, `icon?: Snippet`, `children` | Dashed static container with optional icon and action content. |
+| Component    | Props and defaults                                                                     | Behavior                                                                                                              |
+| ------------ | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `Badge`      | `tone="neutral"`, `dot=false`, `children`                                              | Tones: `neutral`, `accent`, `success`, `warning`, `danger`. Optional decorative dot.                                  |
+| `Progress`   | `value=0`, `label="Progress"`, `height="4px"`, `color="var(--accent-1)"`, `glow=false` | Value is a percentage, clamped to 0–100; non-finite values become zero. Exposes `role="progressbar"` and ARIA values. |
+| `Skeleton`   | `width="100%"`, `height="14px"`, `radius="var(--radius-sm)"`                           | Decorative, `aria-hidden`, shimmer disabled for reduced motion.                                                       |
+| `EmptyState` | `title` **required**, `description=''`, `icon?: Snippet`, `children`                   | Dashed static container with optional icon and action content.                                                        |
 
 ```svelte
 <Badge tone="success" dot>Online</Badge>
 <Progress value={67} label="Battery level" color="var(--accent-2)" />
 <Skeleton width="150px" height="12px" />
-<EmptyState title="No history" description="Your recent items will appear here.">
+<EmptyState
+  title="No history"
+  description="Your recent items will appear here."
+>
   <Button onclick={refresh}>Refresh</Button>
 </EmptyState>
 ```
@@ -252,7 +272,12 @@ Without `onclick`, renders a static div. With `onclick`, renders a native button
 
 ```svelte
 <StatusItem title="Device" value="NP3" />
-<StatusItem title="Battery" value="67%" clickHint="Open details" onclick={openBattery}>
+<StatusItem
+  title="Battery"
+  value="67%"
+  clickHint="Open details"
+  onclick={openBattery}
+>
   {#snippet icon()}{@render batteryIcon()}{/snippet}
 </StatusItem>
 ```
@@ -266,9 +291,15 @@ Without `onclick`, renders a static div. With `onclick`, renders a native button
 `title` is **required**; `description=''`, `platforms=[]`, optional `features`, `actions`, and `children` snippets. Static `<article>` with a level-3 title, platform metadata, descriptive text, optional feature list content, and wrapping action row.
 
 ```svelte
-<ProjectCard title="My project" description="What it does." platforms={['Web', 'Mobile']}>
-  {#snippet features()}<span>Live updates</span><span>Offline access</span>{/snippet}
-  {#snippet actions()}<LinkButton href="/project">Open project →</LinkButton>{/snippet}
+<ProjectCard
+  title="My project"
+  description="What it does."
+  platforms={['Web', 'Mobile']}
+>
+  {#snippet features()}<span>Live updates</span><span>Offline access</span
+    >{/snippet}
+  {#snippet actions()}<LinkButton href="/project">Open project →</LinkButton
+    >{/snippet}
 </ProjectCard>
 ```
 

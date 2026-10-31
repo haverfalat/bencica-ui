@@ -1,5 +1,6 @@
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -39,11 +40,33 @@ body {
   color: var(--text);
 }
 
-button, input, textarea, select { font: inherit; }
-button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
-img, svg { vertical-align: middle; }
-:focus-visible { outline: 2px solid var(--accent-1); outline-offset: 3px; }
-::selection { background: var(--accent-1); color: var(--text); }
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+img,
+svg {
+  vertical-align: middle;
+}
+:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 3px;
+}
+::selection {
+  background: var(--accent-1);
+  color: var(--text);
+}
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 }

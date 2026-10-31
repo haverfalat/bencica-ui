@@ -51,7 +51,9 @@ Import `font.css` or the combined `styles.css` to make the asset available. With
 Uses `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`. To select it globally, place this after the theme import:
 
 ```css
-:root { --font-family: var(--font-system); }
+:root {
+  --font-family: var(--font-system);
+}
 ```
 
 Font scopes include all descendant components, including native dialog content. Presets can be nested. A `data-bencica-theme` scope resets the theme's default tokens, including the font family; set the desired font preset on that scope if needed.
@@ -61,7 +63,9 @@ Font scopes include all descendant components, including native dialog content. 
 Load your own font through the host application's stylesheet or `@font-face`, then set the family:
 
 ```css
-:root { --font-family: 'Inter', sans-serif; }
+:root {
+  --font-family: 'Inter', sans-serif;
+}
 ```
 
 Or scope it to a region:
@@ -91,13 +95,20 @@ See [FONT-NOTICE.md](../FONT-NOTICE.md) for the bundled asset's provenance and l
 The default tokens are declared on `:root` and `[data-bencica-theme]`. Override them after the theme import for a global change:
 
 ```css
-:root { --accent-1: #a78bfa; --radius-md: 6px; }
+:root {
+  --accent-1: #a78bfa;
+  --radius-md: 6px;
+}
 ```
 
 Or use a local theme:
 
 ```svelte
-<div data-bencica-theme data-bencica-font="system" style="--accent-1: #e879f9; --radius-md: 6px;">
+<div
+  data-bencica-theme
+  data-bencica-font="system"
+  style="--accent-1: #e879f9; --radius-md: 6px;"
+>
   <Button variant="next">Local accent</Button>
 </div>
 ```
@@ -110,68 +121,68 @@ The values below match `src/lib/styles/theme.css`.
 
 ### Color and surfaces
 
-| Token | Default |
-| --- | --- |
-| `--bg` | `#0d0d0f` |
-| `--bg-subtle` | `#09090b` |
-| `--surface` | `#16161a` |
-| `--surface-hover` | `#1c1c22` |
-| `--border` | `rgba(255, 255, 255, 0.08)` |
-| `--border-subtle` | `rgba(255, 255, 255, 0.1)` |
-| `--border-hover` | `rgba(255, 255, 255, 0.15)` |
-| `--text` | `#f0f0f2` |
-| `--text-dim` | `#a1a1aa` |
-| `--text-muted` | `#52525b` |
-| `--accent-1` | `#3b82f6` |
-| `--accent-2` | `#10b981` |
-| `--danger` | `#ff7070` |
-| `--warning` | `#fbbf24` |
-| `--overlay` | `rgba(4, 4, 5, 0.85)` |
+| Token             | Default                     |
+| ----------------- | --------------------------- |
+| `--bg`            | `#0d0d0f`                   |
+| `--bg-subtle`     | `#09090b`                   |
+| `--surface`       | `#16161a`                   |
+| `--surface-hover` | `#1c1c22`                   |
+| `--border`        | `rgba(255, 255, 255, 0.08)` |
+| `--border-subtle` | `rgba(255, 255, 255, 0.1)`  |
+| `--border-hover`  | `rgba(255, 255, 255, 0.15)` |
+| `--text`          | `#f0f0f2`                   |
+| `--text-dim`      | `#a1a1aa`                   |
+| `--text-muted`    | `#52525b`                   |
+| `--accent-1`      | `#3b82f6`                   |
+| `--accent-2`      | `#10b981`                   |
+| `--danger`        | `#ff7070`                   |
+| `--warning`       | `#fbbf24`                   |
+| `--overlay`       | `rgba(4, 4, 5, 0.85)`       |
 
 ### Shape, spacing, and layout
 
-| Token | Default |
-| --- | --- |
-| `--radius-sm` | `2px` |
-| `--radius-md` | `4px` |
-| `--space-1` | `4px` |
-| `--space-2` | `8px` |
-| `--space-3` | `12px` |
-| `--space-4` | `16px` |
-| `--space-5` | `20px` |
-| `--space-6` | `24px` |
-| `--space-8` | `32px` |
-| `--space-12` | `48px` |
+| Token             | Default  |
+| ----------------- | -------- |
+| `--radius-sm`     | `2px`    |
+| `--radius-md`     | `4px`    |
+| `--space-1`       | `4px`    |
+| `--space-2`       | `8px`    |
+| `--space-3`       | `12px`   |
+| `--space-4`       | `16px`   |
+| `--space-5`       | `20px`   |
+| `--space-6`       | `24px`   |
+| `--space-8`       | `32px`   |
+| `--space-12`      | `48px`   |
 | `--content-width` | `1050px` |
 
 `gap="0"` maps directly to zero, without a `--space-0` token. Breakpoints are component CSS rules (480px, 600px, 900px), not configurable theme variables.
 
 ### Typography
 
-| Token | Default |
-| --- | --- |
-| `--font-family` | `'Minecraft Regular', monospace` |
-| `--font-system` | `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif` |
-| `--font-ndot` | `var(--font-family)` |
-| `--font-sans`, `--font-body`, `--font-mono`, `--font-pixel` | `var(--font-ndot)` |
-| `--text-xs` | `0.72rem` |
-| `--text-sm` | `0.85rem` |
-| `--text-base` | `14px` |
-| `--text-display` | `2.6rem` |
+| Token                                                       | Default                                                                |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `--font-family`                                             | `'Minecraft Regular', monospace`                                       |
+| `--font-system`                                             | `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif` |
+| `--font-ndot`                                               | `var(--font-family)`                                                   |
+| `--font-sans`, `--font-body`, `--font-mono`, `--font-pixel` | `var(--font-ndot)`                                                     |
+| `--text-xs`                                                 | `0.72rem`                                                              |
+| `--text-sm`                                                 | `0.85rem`                                                              |
+| `--text-base`                                               | `14px`                                                                 |
+| `--text-display`                                            | `2.6rem`                                                               |
 
 ### Motion and elevation
 
-| Token | Default |
-| --- | --- |
-| `--button-depth` | `2px` |
-| `--button-hover-depth` | `3px` |
-| `--shadow-floating` | `0 4px 20px rgba(0, 0, 0, 0.35)` |
-| `--shadow-modal` | `0 10px 30px rgba(0, 0, 0, 0.5)` |
-| `--modal-open-duration` | `360ms` |
-| `--modal-close-duration` | `240ms` |
-| `--modal-easing` | `cubic-bezier(0.22, 1, 0.36, 1)` |
-| `--transition` | `0.15s ease` |
-| `--transition-fast` | `0.08s ease` |
+| Token                    | Default                          |
+| ------------------------ | -------------------------------- |
+| `--button-depth`         | `2px`                            |
+| `--button-hover-depth`   | `3px`                            |
+| `--shadow-floating`      | `0 4px 20px rgba(0, 0, 0, 0.35)` |
+| `--shadow-modal`         | `0 10px 30px rgba(0, 0, 0, 0.5)` |
+| `--modal-open-duration`  | `360ms`                          |
+| `--modal-close-duration` | `240ms`                          |
+| `--modal-easing`         | `cubic-bezier(0.22, 1, 0.36, 1)` |
+| `--transition`           | `0.15s ease`                     |
+| `--transition-fast`      | `0.08s ease`                     |
 
 Modal entry and exit include a subtle translation, scale, opacity, and backdrop transition. Keep the modal mounted to see the exit. Reduced-motion preferences remove the component transitions and skeleton shimmer.
 

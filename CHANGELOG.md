@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added Prettier with the Svelte plugin and formatted all source, configuration, and documentation.
+
 - Made the source repository public at the owner's request; HTTPS Git installation no longer requires GitHub authentication. npm registry publication remains disabled.
 
 ## 0.1.0 — 2026-10-31

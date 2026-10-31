@@ -22,7 +22,7 @@ Update README examples and the appropriate `docs/components.md`, `docs/theming.m
 
 ## Verification
 
-Run `npm run check`, `npm run build`, and `npm pack --dry-run` for package/code changes. For affected runtime behavior or installation, validate with a separate consuming Svelte app outside this repository; verify SSR when relevant. Do not add a test runner or demo just to perform verification. Do not commit `dist/`, dependencies, archives, secrets, or validation output.
+Run `npm run format` after edits (including Svelte files), then `npm run format:check`, `npm run check`, `npm run build`, and `npm pack --dry-run` for package/code changes. For affected runtime behavior or installation, validate with a separate consuming Svelte app outside this repository; verify SSR when relevant. Do not add a test runner or demo just to perform verification. Do not commit `dist/`, dependencies, archives, secrets, or validation output.
 
 ## Git and publishing
 

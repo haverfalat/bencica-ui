@@ -56,8 +56,14 @@ Import styles once in your application entry point or SvelteKit root layout. The
 <script>
   import 'bencica-ui/styles.css';
   import {
-    Card, CardHeader, CardBody, CardFooter,
-    Heading, Text, Button, Modal
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Heading,
+    Text,
+    Button,
+    Modal,
   } from 'bencica-ui';
 
   let open = $state(false);
@@ -67,7 +73,7 @@ Import styles once in your application entry point or SvelteKit root layout. The
   <CardHeader>
     <Heading level={2} size="section">Recently Played</Heading>
     {#snippet actions()}
-      <Button variant="small" onclick={() => open = true}>History</Button>
+      <Button variant="small" onclick={() => (open = true)}>History</Button>
     {/snippet}
   </CardHeader>
   <CardBody>
@@ -81,7 +87,7 @@ Import styles once in your application entry point or SvelteKit root layout. The
 <Modal title="Listening history" bind:open>
   <Text>Keep the modal mounted so its closing animation can finish.</Text>
   {#snippet footer()}
-    <Button onclick={() => open = false}>Done</Button>
+    <Button onclick={() => (open = false)}>Done</Button>
   {/snippet}
 </Modal>
 ```
@@ -113,27 +119,27 @@ Keep a container static when it contains separate buttons or links. Do not nest 
 
 ## Components
 
-| Group | Exports |
-| --- | --- |
-| Actions | `Button`, `LinkButton` |
-| Surfaces | `Card`, `CardHeader`, `CardBody`, `CardFooter`, `Modal` |
-| Layout | `PageShell`, `Stack`, `Grid`, `Divider`, `FloatingAction` |
-| Typography | `Heading`, `Text` |
-| Forms | `Field`, `Input`, `Textarea` |
-| Feedback | `Badge`, `Progress`, `Skeleton`, `EmptyState` |
-| Media | `Avatar`, `Icon`, `MediaItem`, `PlaybackProgress` |
-| Data | `StatusItem`, `Profile`, `ProjectCard` |
+| Group      | Exports                                                   |
+| ---------- | --------------------------------------------------------- |
+| Actions    | `Button`, `LinkButton`                                    |
+| Surfaces   | `Card`, `CardHeader`, `CardBody`, `CardFooter`, `Modal`   |
+| Layout     | `PageShell`, `Stack`, `Grid`, `Divider`, `FloatingAction` |
+| Typography | `Heading`, `Text`                                         |
+| Forms      | `Field`, `Input`, `Textarea`                              |
+| Feedback   | `Badge`, `Progress`, `Skeleton`, `EmptyState`             |
+| Media      | `Avatar`, `Icon`, `MediaItem`, `PlaybackProgress`         |
+| Data       | `StatusItem`, `Profile`, `ProjectCard`                    |
 
 The root also exports `formatTime` and the types `ButtonVariant`, `ButtonSize`, `Tone`, and `Space`. Import components from `bencica-ui`; internal category paths are not public package exports.
 
 ## Styles
 
-| Import | Includes |
-| --- | --- |
-| `bencica-ui/styles.css` | Font + theme + global base styles |
-| `bencica-ui/theme.css` | Theme tokens and font preset selectors |
-| `bencica-ui/base.css` | Optional global reset, body styling, scrollbars, and focus defaults |
-| `bencica-ui/font.css` | Optional bundled Minecraft Regular `@font-face` |
+| Import                  | Includes                                                            |
+| ----------------------- | ------------------------------------------------------------------- |
+| `bencica-ui/styles.css` | Font + theme + global base styles                                   |
+| `bencica-ui/theme.css`  | Theme tokens and font preset selectors                              |
+| `bencica-ui/base.css`   | Optional global reset, body styling, scrollbars, and focus defaults |
+| `bencica-ui/font.css`   | Optional bundled Minecraft Regular `@font-face`                     |
 
 Component styles are scoped. The optional base stylesheet is global. Import theme overrides after the library styles, and use `data-bencica-theme` for a local theme scope. See the [full token reference](docs/theming.md).
 
@@ -141,6 +147,8 @@ Component styles are scoped. The optional base stylesheet is global. Import them
 
 ```sh
 npm ci
+npm run format       # write formatting, including .svelte files
+npm run format:check
 npm run check
 npm run build
 npm run watch  # rebuild the package as src/lib changes

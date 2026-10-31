@@ -21,9 +21,12 @@ npm run build
 7. Export a new component through its category `index.ts`; the root re-exports categories. Keep the package export map intentional.
 8. Update `docs/components.md` for API changes, `docs/theming.md` for theme changes, and `CHANGELOG.md` for meaningful behavior changes. Keep README examples working and current.
 
-## Validation
+## Formatting and validation
+
+Prettier uses `prettier-plugin-svelte` for all Svelte components. Run `npm run format` to write formatting across source, CSS, configuration, and Markdown. Generated output, dependencies, and the generated lockfile are excluded.
 
 ```sh
+npm run format:check
 npm run check
 npm run build
 npm pack --dry-run

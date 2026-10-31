@@ -31,13 +31,17 @@
     "build": "svelte-package",
     "watch": "svelte-package --watch",
     "prepare": "npm run build",
-    "prepack": "npm run check && npm run build"
+    "prepack": "npm run check && npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "peerDependencies": {
     "svelte": "^5.46.4"
   },
   "devDependencies": {
     "@sveltejs/package": "^2.0.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-svelte": "^4.1.1",
     "svelte": "^5.55.2",
     "svelte-check": "^4.0.0",
     "typescript": "^5.0.0"
