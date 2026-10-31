@@ -67,7 +67,7 @@ The Svelte configuration is intentionally empty. No app bundler or TypeScript pr
 
 `prepare` builds the package for source/Git installs. `prepack` checks and rebuilds it before creating an archive. `files` includes `dist/`, documentation, the changelog, and the font notice. npm automatically includes `README.md` and `package.json`; contributor/agent instructions remain repository documents. Build output, dependencies, environment files, and archives are ignored by Git.
 
-The repository and package are private. `private: true` prevents npm registry publication while still allowing authenticated Git installation and local archive installation. Keep GitHub visibility private unless the owner explicitly requests otherwise.
+The GitHub repository is public, so HTTPS Git installation does not require authentication. The package retains `private: true` to prevent npm registry publication while allowing Git and local archive installation. Keep repository visibility public unless the owner explicitly requests otherwise.
 
 ## SSR and browser behavior
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Made the source repository public at the owner's request; HTTPS Git installation no longer requires GitHub authentication. npm registry publication remains disabled.
+
 ## 0.1.0 — 2026-10-31
 
 Initial standalone extraction of the bencica.hu design language.
@@ -11,4 +15,4 @@ Initial standalone extraction of the bencica.hu design language.
 - Native dialogs with 360ms entry / 240ms exit, backdrop transitions, reduced-motion support, focus cycling/restoration, and nested scroll locks.
 - Readable sliding action hints, visible without hovering on touch screens.
 - Forms, media/profile/project patterns, feedback, skeletons, and playback presentation without service integrations.
-- Library-only packaging, authenticated Git installation, complete usage/theme/API documentation, and contributor/agent instructions.
+- Library-only packaging, Git installation, complete usage/theme/API documentation, and contributor/agent instructions.

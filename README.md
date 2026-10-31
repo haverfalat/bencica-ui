@@ -2,7 +2,7 @@
 
 A modular Svelte 5 component library extracted from **bencica.hu**: dark surfaces, fine borders, compact corners, blue and green accents, and tactile buttons. Use the bundled **Minecraft Regular** font, normal system fonts, or your own typeface.
 
-This private repository contains the library and documentation. It has no demo app, HTML entry point, test suite, browser automation, analytics, API integrations, or runtime icon dependency. Svelte is its only runtime peer dependency.
+This public repository contains the library and documentation. It has no demo app, HTML entry point, test suite, browser automation, analytics, API integrations, or runtime icon dependency. Svelte is its only runtime peer dependency.
 
 ## Documentation
 
@@ -21,12 +21,12 @@ This private repository contains the library and documentation. It has no demo a
 
 ## Installation
 
-The repository is private and the package is not published to npm. Authenticate with GitHub before cloning or installing it.
+The repository is public. The package is not published to npm; install it directly from GitHub or a local checkout. GitHub authentication is not required for HTTPS installation.
 
 ### From GitHub
 
 ```sh
-npm install git+ssh://git@github.com/haverfalat/bencica-ui.git
+npm install git+https://github.com/haverfalat/bencica-ui.git
 ```
 
 The `prepare` script builds `dist/` when npm installs from Git. For reproducible deployments, pin the Git dependency to a reviewed commit with `#<commit-sha>`.
@@ -34,7 +34,7 @@ The `prepare` script builds `dist/` when npm installs from Git. For reproducible
 ### From a local checkout
 
 ```sh
-git clone git@github.com:haverfalat/bencica-ui.git
+git clone https://github.com/haverfalat/bencica-ui.git
 cd bencica-ui
 npm ci
 npm run check
@@ -151,4 +151,4 @@ npm pack --dry-run
 
 ## License
 
-`UNLICENSED`, private, and not published to the npm registry. The bundled font remains a third-party asset; see [FONT-NOTICE.md](FONT-NOTICE.md). No new license is granted to it by this repository.
+`UNLICENSED`. The source repository is public; npm registry publication remains disabled with `private: true`. The bundled font remains a third-party asset; see [FONT-NOTICE.md](FONT-NOTICE.md). No new license is granted to it by this repository.

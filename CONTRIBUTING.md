@@ -35,4 +35,4 @@ Do not commit `dist/`, `node_modules/`, package archives, local environment file
 
 ## Distribution
 
-`haverfalat/bencica-ui` is a private repository. This package is `private: true` and `UNLICENSED`; Git/archive installation is supported, npm registry publication is disabled. Do not change repository visibility, choose a new source license, or alter the third-party font's licensing metadata as a routine maintenance step.
+`haverfalat/bencica-ui` is a public source repository. This package is `private: true` and `UNLICENSED`; Git/archive installation is supported, npm registry publication is disabled. Do not change repository visibility, choose a new source license, or alter the third-party font's licensing metadata as a routine maintenance step.

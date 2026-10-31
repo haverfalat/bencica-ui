@@ -26,4 +26,4 @@ Run `npm run check`, `npm run build`, and `npm pack --dry-run` for package/code 
 
 ## Git and publishing
 
-The intended remote is `https://github.com/haverfalat/bencica-ui`, with private visibility. Preserve that visibility and the package's `private: true` setting. Keep `UNLICENSED` unless the owner requests a license change. Push or publish only within the user's authorized scope; npm registry publishing is intentionally disabled.
+The intended remote is `https://github.com/haverfalat/bencica-ui`, with public visibility, explicitly authorized by the owner. Preserve that visibility and the package's `private: true` setting (which prevents npm registry publication). Keep `UNLICENSED` unless the owner requests a license change. Push or publish only within the user's authorized scope; npm registry publishing is intentionally disabled.
